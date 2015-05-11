@@ -42,5 +42,16 @@ feature 'game' do
       expect(current_path).to eq '/games'
     end
   end
-  
+
+  context 'leaving game' do
+    scenario 'user leaves an existing game' do
+      create_game
+      visit '/games'
+      click_link 'Game 1'
+      expect(current_path).to eq '/games/1'
+      click_button 'Leave Game'
+      expect(page).to have_content('No games yet')
+      expect(current_path).to eq '/games'
+    end
+  end
 end
