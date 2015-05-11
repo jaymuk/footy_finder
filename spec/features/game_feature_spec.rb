@@ -7,7 +7,7 @@ feature 'game' do
     scenario 'should display a propmpt to add a game' do
       visit '/games'
       expect(page).to have_content 'No games yet'
-      expect(page).to have_link 'Add a game'
+      expect(page).to have_link 'Add a Game'
     end
   end
 
@@ -37,7 +37,7 @@ feature 'game' do
       visit '/games'
       click_link 'Game 1'
       expect(current_path).to eq '/games/1'
-      click_button 'Join game'
+      click_button 'Join Game'
       expect(page).to have_content 'You have joined Game 1'
       expect(current_path).to eq '/games'
     end
@@ -51,6 +51,18 @@ feature 'game' do
       expect(current_path).to eq '/games/1'
       click_button 'Leave Game'
       expect(page).to have_content('No games yet')
+      expect(current_path).to eq '/games'
+    end
+  end
+
+  context 'editing game' do
+    scenario 'user can edit an existing game' do
+      create_game
+      visit '/games'
+      click_link 'Game 1'
+      expect(current_path).to eq '/games/1'
+      click_button 'Edit Game'
+      expect(page).to have_content('Game 2')
       expect(current_path).to eq '/games'
     end
   end
