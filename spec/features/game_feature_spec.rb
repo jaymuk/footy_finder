@@ -12,9 +12,6 @@ feature 'game' do
   end
 
   context 'games have been added' do
-    # before do
-    #   Game.create(name: 'Game 1')
-    # end
 
     scenario 'display games' do
       create_game 
@@ -29,13 +26,18 @@ feature 'game' do
       expect(page).to have_content 'Game 1'
       expect(current_path).to eq '/games'
     end
+
+    scenario 'a game has a view page' do
+      create_game
+      click_link 'Game 1'
+      expect(current_path).to eq "/games/#{Game.last.id}"
+    end
   end
 
   context 'user joining existing game' do
     scenario 'select game to join on home page' do
       create_game
       click_link 'Game 1'
-      expect(current_path).to eq "/games/#{Game.last.id}"
       click_link 'Join Game'
       expect(page).to have_content 'You have joined Game 1'
       expect(current_path).to eq '/games'
@@ -46,7 +48,6 @@ feature 'game' do
     scenario 'user leaves an existing game' do
       create_game
       click_link 'Game 1'
-      expect(current_path).to eq "/games/#{Game.last.id}"
       click_link 'Leave Game'
       expect(page).to have_content('You left the game')
       expect(current_path).to eq '/games'
@@ -57,8 +58,9 @@ feature 'game' do
     scenario 'user can edit an existing game' do
       create_game
       click_link 'Game 1'
-      expect(current_path).to eq "/games/#{Game.last.id}"
       click_link 'Edit Game'
+      fill_in('Name', with: 'Game 2')
+      click_link('Update Game')
       expect(page).to have_content('Game 2')
       expect(current_path).to eq '/games'
     end
@@ -68,9 +70,8 @@ feature 'game' do
     scenario 'user can delete game they created' do
       create_game
       click_link 'Game 1'
-      expect(current_path).to eq "/games/#{Game.last.id}"
       click_link 'Delete Game'
-      expect(page).to have_content('No games yet')
+      expect(page).not_to have_content('No games yet')
       expect(current_path).to eq '/games'
     end
   end
