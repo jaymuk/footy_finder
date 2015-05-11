@@ -1,6 +1,6 @@
 <% if @game.any? %>
   <% @game.each do |game| %>
-    <h2> <%= game.name %></h2>
+    <h2> <%= link_to game.name, game_path(game) %></h2>
   <% end %>
 <% else %>
   No games yet

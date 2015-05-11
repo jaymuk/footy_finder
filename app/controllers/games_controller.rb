@@ -12,6 +12,10 @@ class GamesController < ApplicationController
     redirect_to '/games'
   end
 
+  def show
+    @game = Game.find(params[:id])
+  end
+
   private
   def game_params
     params.require(:game).permit(:name, :location, :date_time)
