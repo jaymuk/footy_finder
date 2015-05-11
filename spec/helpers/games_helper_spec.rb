@@ -10,5 +10,4 @@ module GamesHelper
     click_button 'Create a game'
   end
 
-
 end

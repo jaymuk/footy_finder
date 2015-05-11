@@ -31,4 +31,16 @@ feature 'game' do
     end
   end
 
+  context 'user joining existing game' do
+    scenario 'select game to join on home page' do
+      create_game
+      visit '/games'
+      click_link 'Game 1'
+      expect(current_path).to eq '/games/1'
+      click_button 'Join game'
+      expect(page).to have_content 'You have joined Game 1'
+      expect(current_path).to eq '/games'
+    end
+  end
+  
 end
