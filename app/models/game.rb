@@ -6,4 +6,8 @@ class Game < ActiveRecord::Base
 
   belongs_to :user
   has_many :users
+
+  def joined_by(user)
+    (joins&user.joins)    
+  end
 end

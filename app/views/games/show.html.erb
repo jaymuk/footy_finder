@@ -1,5 +1,13 @@
 <%= @game.name %>
 <%= @game.location %>
 <%= @game.date_time %>
-<%= link_to 'Join Game', new_game_join_path(@game) %>
-<%= link_to 'Delete Game', game_path(@game), method: :delete %>
+
+<% if user_signed_in? %>
+  <%= link_to 'Delete Game', game_path(@game), method: :delete %>
+
+  <% if current_user.has_joined?(@game) %>
+    <%= link_to 'Leave Game', game_join_path(@game), method: :delete %>
+  <% else %>
+    <%= link_to 'Join Game', new_game_join_path(@game, joined_by(current_user)) %>
+  <% end %>
+<% end %>
