@@ -71,7 +71,7 @@ feature 'game' do
       create_game
       click_link 'Game 1'
       click_link 'Delete Game'
-      expect(page).not_to have_content('No games yet')
+      expect(page).to have_content('No games yet')
       expect(current_path).to eq '/games'
     end
   end
