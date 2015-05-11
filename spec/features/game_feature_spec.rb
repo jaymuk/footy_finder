@@ -36,7 +36,7 @@ feature 'game' do
       create_game
       click_link 'Game 1'
       expect(current_path).to eq "/games/#{Game.last.id}"
-      click_button 'Join Game'
+      click_link 'Join Game'
       expect(page).to have_content 'You have joined Game 1'
       expect(current_path).to eq '/games'
     end
@@ -47,7 +47,7 @@ feature 'game' do
       create_game
       click_link 'Game 1'
       expect(current_path).to eq "/games/#{Game.last.id}"
-      click_button 'Leave Game'
+      click_link 'Leave Game'
       expect(page).to have_content('No games yet')
       expect(current_path).to eq '/games'
     end
@@ -58,7 +58,7 @@ feature 'game' do
       create_game
       click_link 'Game 1'
       expect(current_path).to eq "/games/#{Game.last.id}"
-      click_button 'Edit Game'
+      click_link 'Edit Game'
       expect(page).to have_content('Game 2')
       expect(current_path).to eq '/games'
     end
@@ -69,7 +69,7 @@ feature 'game' do
       create_game
       click_link 'Game 1'
       expect(current_path).to eq "/games/#{Game.last.id}"
-      click_button 'Delete Game'
+      click_link 'Delete Game'
       expect(page).not_to have_content('Game 1')
       expect(current_path).to eq '/games'
     end
