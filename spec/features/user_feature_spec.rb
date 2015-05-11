@@ -22,7 +22,7 @@ feature 'user' do
       fill_in('Email', with:'test@test.com')
       fill_in('Password', with: 'testtest')
       fill_in('Password confirmation', with: 'testtest')
-      click_link('Sign up')
+      click_link('Sign Up')
       expect(page).to have_content('Welcome test@test.com')
       expect(current_path).to eq '/games'
     end
