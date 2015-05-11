@@ -1,0 +1,9 @@
+<% if @game.any? %>
+  <% @game.each do |game| %>
+    <h2> <%= game.name %></h2>
+  <% end %>
+<% else %>
+  No games yet
+<% end %>
+
+<%= link_to 'Add a game', new_game_path %>
