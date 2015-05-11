@@ -1,6 +1,5 @@
 <%= @game.name %>
 <%= @game.location %>
 <%= @game.date_time %>
-<button>Join Game</butto>
-<%= %>
-<%= %>
+<%= link_to 'Join Game', new_game_join_path(@game) %>
+<%= link_to 'Delete Game', game_path(@game), method: :delete %>

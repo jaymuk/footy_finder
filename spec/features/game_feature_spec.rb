@@ -70,7 +70,7 @@ feature 'game' do
       click_link 'Game 1'
       expect(current_path).to eq "/games/#{Game.last.id}"
       click_link 'Delete Game'
-      expect(page).not_to have_content('No games yet')
+      expect(page).to have_content('No games yet')
       expect(current_path).to eq '/games'
     end
   end

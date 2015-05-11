@@ -3,4 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :games
+  has_many :joined_games, through: :joins, source: :game
+
+  def has_joined?(game)
+    joined_games.include? game
+  end
 end
