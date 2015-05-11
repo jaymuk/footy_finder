@@ -43,6 +43,7 @@ feature 'game' do
 
   context 'user joining existing game' do
     scenario 'select game to join on home page' do
+      create_user('email@test.com', 'testpassword')
       create_game
       click_link 'Game 1'
       click_link 'Join Game'

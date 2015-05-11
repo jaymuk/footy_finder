@@ -6,8 +6,8 @@
   <%= link_to 'Delete Game', game_path(@game), method: :delete %>
 
   <% if current_user.has_joined?(@game) %>
-    <%= link_to 'Leave Game', game_join_path(@game), method: :delete %>
+    <%= link_to 'Leave Game', game_join_path(@game, @game.joined_by(current_user)), method: :delete %>
   <% else %>
-    <%= link_to 'Join Game', new_game_join_path(@game, joined_by(current_user)) %>
+    <%= link_to 'Join Game', new_game_join_path(@game) %>
   <% end %>
 <% end %>

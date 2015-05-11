@@ -7,6 +7,10 @@ class Game < ActiveRecord::Base
   belongs_to :user
   has_many :users
 
+  def has_been_joined?(user)
+    joined_by(user).length > 0
+  end
+
   def joined_by(user)
     (joins&user.joins)    
   end
