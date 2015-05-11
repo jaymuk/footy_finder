@@ -1,0 +1,8 @@
+<%= simple_form_for @game do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  <%= f.input :date_time, as: :datetime_picker, wrapper: :ranged_datetime %>
+  <%= f.submit %>
+<% end %>
