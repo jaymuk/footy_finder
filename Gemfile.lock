@@ -1,3 +1,19 @@
+GIT
+  remote: git://github.com/derekprior/momentjs-rails.git
+  revision: 9fac38f9b7603ad5da4cba4d971654370f9e2d7b
+  specs:
+    momentjs-rails (2.10.2)
+      railties (>= 3.1)
+
+GIT
+  remote: git://github.com/zpaulovics/datetimepicker-rails.git
+  revision: c5405f3486b57a52416caf93b79fc09d56930a82
+  branch: master
+  submodules: true
+  specs:
+    datetimepicker-rails (4.7.15)
+      momentjs-rails (>= 2.9.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -172,9 +188,11 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails (~> 4.1.0)
+  datetimepicker-rails!
   haml
   jbuilder (~> 2.0)
   jquery-rails
+  momentjs-rails (~> 2.9)!
   pg
   rails (= 4.2.1)
   rspec-rails
