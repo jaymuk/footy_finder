@@ -14,4 +14,15 @@ class JoinsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    @join = Join.find(params[:id])
+    if current_user == @join.user
+      @join.destroy
+      flash[:notice] = 'You left the game'
+    else
+      flash[:notice] = 'Cannot leave the game'
+    end
+    redirect_to '/games'
+  end
 end
