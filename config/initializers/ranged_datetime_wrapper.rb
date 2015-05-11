@@ -1,3 +1,5 @@
+require 'simple_form'
+
 SimpleForm.setup do |config|
   config.wrappers :ranged_datetime, tag: 'div', class: 'form-group col-md-6', error_class: 'has-error' do |b|
     b.use :html5
