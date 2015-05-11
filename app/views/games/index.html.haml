@@ -1,0 +1,7 @@
+- if Game.all.any?
+  - Game.all.each do |game|
+    %h2= game.name
+- else
+  %h1 No games yet
+
+%a(href='#') Add a game
