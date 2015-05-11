@@ -1,15 +1,14 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the GamesHelper. For example:
-#
-# describe GamesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
-RSpec.describe GamesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+module GamesHelper 
+  def create_game
+    visit '/games'
+    click_link 'Add a game'
+    fill_in 'Name', with: 'Game 1'
+    fill_in 'Location', with: 'London'
+    fill_in 'DateTime', with: 'Monday 12:00'
+    click_button 'Create a game'
+  end
+
+
 end
