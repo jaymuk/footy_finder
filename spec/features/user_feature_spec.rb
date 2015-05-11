@@ -22,7 +22,7 @@ feature 'user' do
       fill_in('Email', with:'test@test.com')
       fill_in('Password', with: 'testtest')
       fill_in('Password confirmation', with: 'testtest')
-      click_button('Sign up')
+      click_link('Sign up')
       expect(page).to have_content('Welcome test@test.com')
       expect(current_path).to eq '/games'
     end
@@ -33,9 +33,9 @@ feature 'user' do
       visit '/games'
       fill_in('Email', with:'test@test.com')
       fill_in('Password', with:'testtest')
-      click_button('Sign In')
+      click_link('Sign In')
       expect(page).to have_content('Welcome test@test.com')
-      expect(page).to have_button('Sign Out')
+      expect(page).to have_link('Sign Out')
       expect(current_path).to eq '/games'
     end
   end
@@ -45,7 +45,7 @@ feature 'user' do
       visit '/games'
       fill_in('Email', with: 'test1@test.com')
       fill_in('Password', with: 'testtest')
-      click_button('Sign In')
+      click_link('Sign In')
       expect(page).to have_content('Please re-enter correct details')
       expect(current_path).to eq '/games'
     end
@@ -58,12 +58,12 @@ feature 'user' do
       click_link('Sign Up')
       fill_in('Email', with: 'test@test.com')
       fill_in('Password', with: 'testtest')
-      click_button('Sign Up')
+      click_link('Sign Up')
     end
 
     it "should see 'sign out' button" do
       visit '/games'
-      expect(page).to have_button('Sign Out')
+      expect(page).to have_link('Sign Out')
     end
 
     it "should not see a 'sign in' or a 'sign up' link" do
