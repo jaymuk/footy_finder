@@ -71,7 +71,5 @@ feature 'user' do
       expect(page).not_to have_link('Sign In')
       expect(page).not_to have_link('Sign Up')
     end
-
   end
-
 end
