@@ -9,5 +9,4 @@ module GamesHelper
     fill_in 'DateTime', with: 'Monday 12:00'
     click_button 'Create a game'
   end
-
 end
