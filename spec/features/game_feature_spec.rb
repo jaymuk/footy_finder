@@ -1,8 +1,15 @@
 require 'rails_helper'
 require 'helpers/games_helper_spec'
+require 'helpers/users_helper_spec'
 
 feature 'game' do
   include GamesHelper
+  include UsersHelper
+
+  before do
+    create_user('email@test.com', 'testpassword')
+  end
+
   context 'no games have been added' do
     scenario 'should display a propmpt to add a game' do
       visit '/games'
